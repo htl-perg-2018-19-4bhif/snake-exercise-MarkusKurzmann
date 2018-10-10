@@ -108,13 +108,18 @@ function stopGame(){
     cursor.reset();
     cursor.bg.reset();
     process.stdout.write('\x1B[?25h');
-    cursor.goto(1, height + 4);
+    cursor.bg.black();
+    cursor.goto(15, 15).write("Game Over!");
+    cursor.bg.reset();
+}
+
+function exitGame(){
     process.exit();
 }
 
 function inputHandler(chunk,key) {
     if (key.name == 'q') {
-        stopGame();
+        exitGame();
     } else if (key.name == 'right') {
         dirX = 1;
         dirY = 0;
